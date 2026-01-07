@@ -57,9 +57,9 @@ Sensitive data (SSH passwords, Zabbix Server IPs) are encrypted using **Ansible 
 *(Place your screenshots in an assets/ folder in this repository and link them below)*
 
 #### **1\. Automated Deployment (Ansible) -- Live Web Application -- Container Status**
- ![Alt Text](assets/deployment.png)
+ ![Alt Text](assets/Deployment.png)
 #### **2\. Zabbix Monitoring Dashboard**
- ![Alt Text](assets/zabbix.png)
+ ![Alt Text](assets/Zabbix.png)
 
 ## **🚦 How to Run**
 
