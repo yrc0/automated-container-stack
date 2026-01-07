@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  # The Backend API
+  flask-app:
+    build: ./app
+    container_name: flask-app
+    restart: always
+    depends_on:
+      redis-db:
+        condition: service_healthy
+    networks:
+      - backend-net
+
+  # The Reverse Proxy
+  nginx-proxy:
+    build: ./nginx
+    container_name: nginx-proxy
+    ports:
+      - "80:80"
+    depends_on:
+      - flask-app
+    networks:
+      - backend-net
+
+  # The Database
+  redis-db:
+    image: "redis:alpine"
+    container_name: redis-db
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+    networks:
+      - backend-net
+
+networks:
+  backend-net:
+    driver: bridge
